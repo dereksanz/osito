@@ -34,7 +34,7 @@ AUDIO_FORMAT = pyaudio.paInt16
 
 WHISPER_MODEL = "small"
 
-OLLAMA_MODEL = "qwen2.5:3b"
+OLLAMA_MODEL = "qwen2.5:1.5b-instruct"
 LLM_MAX_TOKENS = 40
 LLM_TEMPERATURE = 0.7
 
@@ -88,7 +88,7 @@ def check_ollama():
         model_names = [m.model for m in models.models]
         if OLLAMA_MODEL not in model_names and f"{OLLAMA_MODEL}:latest" not in model_names:
             print(f"\n  ERROR: Modelo {OLLAMA_MODEL} no encontrado")
-            print("  Ejecuta: ollama pull gpt-oss:20b")
+            print(f"  Ejecuta: ollama pull {OLLAMA_MODEL}")
             sys.exit(1)
         print(f"  Ollama listo con {OLLAMA_MODEL}")
     except Exception as e:
